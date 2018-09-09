@@ -5,7 +5,7 @@ import routes from './routes'
 export default () => {
   return new Router({
     routes,
-    mode: 'history',
+    mode: 'history', // CROWN：hash# 路由一般用来定位的，也不会被搜索引擎解析，SEO会变得不好，因此改为history正常模式。
     // base: '/base/',
     linkActiveClass: 'active-link',
     linkExactActiveClass: 'exact-active-link',
