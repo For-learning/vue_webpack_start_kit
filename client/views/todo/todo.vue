@@ -29,116 +29,115 @@
 </template>
 
 <script>
-import {
-  mapState, mapActions
-} from 'vuex'
-import Item from './item.vue'
-import Helper from './helper.vue'
+import { mapState, mapActions } from "vuex";
+import Item from "./item.vue";
+import Helper from "./helper.vue";
 
 export default {
   metaInfo: {
-    title: 'The Todo App'
+    title: "The Todo App"
   },
-  beforeRouteEnter (to, from, next) {
-    console.log('todo before enter', this)
+  beforeRouteEnter(to, from, next) {
+    console.log("todo before enter", this);
     next(vm => {
-      console.log('after enter vm.id is ', vm.id)
-    })
+      console.log("after enter vm.id is ", vm.id);
+    });
   },
-  beforeRouteUpdate (to, from, next) {
-    console.log('todo update enter')
-    next()
+  beforeRouteUpdate(to, from, next) {
+    console.log("todo update enter");
+    next();
   },
-  beforeRouteLeave (to, from, next) {
-    console.log('todo leave enter')
-    next()
+  beforeRouteLeave(to, from, next) {
+    console.log("todo leave enter");
+    next();
   },
-  props: ['id'],
-  mounted () {
+  props: ["id"],
+  mounted() {
     // console.log('todo mounted')
     if (this.todos && this.todos.length < 1) {
-      this.fetchTodos()
+      this.fetchTodos();
     }
   },
-  asyncData ({ store, router }) {
+  asyncData({ store, router }) {
     if (store.state.user) {
-      return store.dispatch('fetchTodos')
+      return store.dispatch("fetchTodos");
     }
-    router.replace('/login')
-    return Promise.resolve()
+    router.replace("/login");
+    return Promise.resolve();
   },
-  data () {
+  data() {
     return {
-      filter: 'all',
-      stats: ['all', 'active', 'completed']
-    }
+      filter: "all",
+      stats: ["all", "active", "completed"]
+    };
   },
   components: {
     Item,
     Helper
   },
   computed: {
-    ...mapState(['todos']),
-    filteredTodos () {
-      if (this.filter === 'all') {
-        return this.todos
+    ...mapState(["todos"]),
+    filteredTodos() {
+      if (this.filter === "all") {
+        return this.todos;
       }
-      const completed = this.filter === 'completed'
-      return this.todos.filter(todo => completed === todo.completed)
+      const completed = this.filter === "completed";
+      return this.todos.filter(todo => completed === todo.completed);
     }
   },
   methods: {
     ...mapActions([
-      'fetchTodos',
-      'addTodo',
-      'deleteTodo',
-      'updateTodo',
-      'deleteAllCompleted'
+      "fetchTodos",
+      "addTodo",
+      "deleteTodo",
+      "updateTodo",
+      "deleteAllCompleted"
     ]),
-    handleAdd (e) {
-      const content = e.target.value.trim()
+    handleAdd(e) {
+      const content = e.target.value.trim();
       if (!content) {
         this.$notify({
-          content: '必须输入要做的内容'
-        })
-        return
+          content: "必须输入要做的内容"
+        });
+        return;
       }
       const todo = {
         content,
         completed: false
-      }
-      this.addTodo(todo)
-      e.target.value = ''
+      };
+      this.addTodo(todo);
+      e.target.value = "";
     },
     // deleteTodo (id) {
     //   this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1)
     // },
-    toggleTodoState (todo) {
+    toggleTodoState(todo) {
       this.updateTodo({
         id: todo.id,
         todo: Object.assign({}, todo, {
           completed: !todo.completed
         })
-      })
+      });
     },
-    clearAllCompleted () {
+    clearAllCompleted() {
       // this.todos = this.todos.filter(todo => !todo.completed)
-      this.deleteAllCompleted()
+      this.deleteAllCompleted();
     },
-    handleChangeTab (value) {
-      this.filter = value
+    handleChangeTab(value) {
+      this.filter = value;
     }
   }
-}
+};
 </script>
 
 <style lang="stylus" scoped>
-.real-app{
-  width 600px
-  margin 0 auto
-  box-shadow 0 0 5px #666
+.real-app {
+  width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 0 5px #666;
 }
-.add-input{
+
+.add-input {
   position: relative;
   margin: 0;
   width: 100%;
@@ -156,11 +155,13 @@ export default {
   font-smoothing: antialiased;
   padding: 16px 16px 16px 60px;
   border: none;
-  box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
+  box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
 }
-.tab-container
-  background-color #fff
-  padding 0 15px
+
+.tab-container {
+  background-color: #fff;
+  padding: 0 15px;
+}
 </style>
 
 
