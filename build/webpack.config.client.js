@@ -27,7 +27,13 @@ const devServer = {
   overlay: {
     errors: true
   },
-  headers: { 'Access-Control-Allow-Origin': '*' },
+  headers: {
+    'Access-Control-Allow-Origin': '*'
+  },
+  /**
+   * mode: "history" 模式下需要开启这个设置，否则路由会当成真正的请求区请求后台，
+   * 
+   */
   historyApiFallback: {
     index: '/public/index.html'
   },
@@ -44,22 +50,20 @@ if (isDev) {
   config = merge(baseConfig, {
     devtool: '#cheap-module-eval-source-map',
     module: {
-      rules: [
-        {
-          test: /\.styl/,
-          use: [
-            'vue-style-loader',
-            'css-loader',
-            {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: true
-              }
-            },
-            'stylus-loader'
-          ]
-        }
-      ]
+      rules: [{
+        test: /\.styl/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          'stylus-loader'
+        ]
+      }]
     },
     devServer,
     plugins: defaultPluins.concat([
@@ -78,24 +82,22 @@ if (isDev) {
       publicPath: cdnConfig.host
     },
     module: {
-      rules: [
-        {
-          test: /\.styl/,
-          use: ExtractPlugin.extract({
-            fallback: 'vue-style-loader',
-            use: [
-              'css-loader',
-              {
-                loader: 'postcss-loader',
-                options: {
-                  sourceMap: true
-                }
-              },
-              'stylus-loader'
-            ]
-          })
-        }
-      ]
+      rules: [{
+        test: /\.styl/,
+        use: ExtractPlugin.extract({
+          fallback: 'vue-style-loader',
+          use: [
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true
+              }
+            },
+            'stylus-loader'
+          ]
+        })
+      }]
     },
     plugins: defaultPluins.concat([
       new ExtractPlugin('styles.[contentHash:8].css'),

@@ -37,6 +37,11 @@ export default {
   metaInfo: {
     title: "The Todo App"
   },
+  /**
+   * CROWN：
+   * 导航守卫
+   * 以下三个都是todo模块的导航守卫
+   */
   beforeRouteEnter(to, from, next) {
     console.log("todo before enter", this);
     next(vm => {

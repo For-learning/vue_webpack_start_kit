@@ -12,8 +12,7 @@ const config = {
     publicPath: 'http://127.0.0.1:8000/public/'
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.(vue|js|jsx)$/,
         loader: 'eslint-loader',
         exclude: /node_modules/,
@@ -35,15 +34,13 @@ const config = {
       },
       {
         test: /\.(gif|jpg|jpeg|png|svg)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 1024,
-              name: 'resources/[path][name].[hash:8].[ext]'
-            }
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 1024,
+            name: 'resources/[path][name].[hash:8].[ext]'
           }
-        ]
+        }]
       }
     ]
   }
