@@ -30,22 +30,20 @@ config = merge(baseConfig, {
   entry: path.join(__dirname, '../practice/index.js'),
   devtool: '#cheap-module-eval-source-map',
   module: {
-    rules: [
-      {
-        test: /\.styl/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-          'stylus-loader'
-        ]
-      }
-    ]
+    rules: [{
+      test: /\.styl/,
+      use: [
+        'vue-style-loader',
+        'css-loader',
+        {
+          loader: 'postcss-loader',
+          options: {
+            sourceMap: true
+          }
+        },
+        'stylus-loader'
+      ]
+    }]
   },
   devServer,
   // import Vue from 'vue'
