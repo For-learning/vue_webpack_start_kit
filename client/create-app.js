@@ -27,5 +27,9 @@ export default () => {
     render: h => h(App)
   })
 
-  return { app, router, store }
+  return {
+    app,
+    router,
+    store
+  }
 }
