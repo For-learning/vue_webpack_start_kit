@@ -12,12 +12,14 @@ const isDev = process.env.NODE_ENV === 'development'
 const devServer = {
   port: 9090,
   host: '0.0.0.0',
-  // 开启编译错误提示
+  // 将出现的错误出现在网页上，以便更好的提示
   overlay: {
     errors: true
   },
-  // 热替换
-  hot: true
+  // 热替换，只替换当前修改的组件，要配合下面的 HotModuleReplacementPlugin 使用
+  hot: true,
+  // 自动打开浏览器
+  // open: true
 }
 
 // Define config
@@ -45,9 +47,10 @@ config = merge(baseConfig, {
   devtool: '#cheap-module-eval-source-map',
   plugins: [
     /**
-     * 一般vue，react之类的框架都会设置此属性
-     * 因为vue会有不同版本的vue代码打包来分别适应dev环境和prod环境，比如开发环境需要丰富的信息提示等，而产品环境则需要更好的运行速度
-     * 这个配置会告诉webpack进行打包的时候使用不同的vue版本
+     * 一般vue，react之类的框架都会设置此属性：
+     * 1. 首先这个变量在这里，在webpack打包的编译的过程中是可以引用到的
+     * 2. 区分打包，因为vue会有不同版本的vue代码打包来分别适应dev环境和prod环境，比如开发环境需要丰富的信息提示等，
+     * 而产品环境则需要更好的运行速度，这个配置会告诉webpack进行打包的时候使用不同的vue版本
      */
     new webpack.DefinePlugin({
       'process.env': {
