@@ -1,9 +1,5 @@
 import Vue from 'vue'
 
-// const root = document.createElement('div')
-// root.setAttribute("id", "root");
-// document.body.appendChild(root)
-
 const app = new Vue({
   el: '#root',
   template: '<div ref="div">{{text}} {{obj.a}}</div>',
