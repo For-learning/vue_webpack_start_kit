@@ -5,19 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js",
-    "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.config.server.js",
-    "build": "npm run clean && npm run build:client && npm run build:server && npm run upload",
-    "practice": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.practice.js",
-    "clean": "rimraf public && rimraf server-build",
-    "upload": "node build/upload.js",
-    "lint": "eslint --ext .js --ext .jsx --ext .vue client/",
-    "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue client/",
-    "precommit": "npm run lint-fix",
-    "dev:client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
-    "dev:server": "nodemon server/server.js",
-    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
-    "start": "cross-env NODE_ENV=production node server/server.js"
+    "build": "cross-env NODE_ENV=production webpack-dev-server --config build/webpack.config.practice.js",
+    "practice": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.practice.js"
   },
   "author": "",
   "license": "ISC",
@@ -25,7 +14,19 @@
     "vue": "^2.5.17"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "babel": "^6.23.0",
+    "babel-loader": "^8.0.2",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
+    "html-webpack-plugin": "^3.2.0",
     "path": "^0.12.7",
-    "webpack": "^4.19.1"
+    "url-loader": "^1.1.1",
+    "vue-loader": "^15.4.2",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.9",
+    "webpack-merge": "^4.1.4"
   }
 }

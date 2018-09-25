@@ -1,7 +1,11 @@
 import Vue from 'vue'
 
+// const root = document.createElement('div')
+// root.setAttribute("id", "root");
+// document.body.appendChild(root)
+
 const app = new Vue({
-  // el: '#root',
+  el: '#root',
   template: '<div ref="div">{{text}} {{obj.a}}</div>',
   data: {
     text: 0,
@@ -14,7 +18,7 @@ const app = new Vue({
   // }
 })
 
-app.$mount('#root')
+// app.$mount('#root')
 
 let i = 0
 setInterval(() => {
