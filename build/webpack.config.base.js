@@ -30,6 +30,9 @@ const config = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
+        /**
+         * node_modules中的js文件都已经编译好了，不需要再次编译，只需要加载即可
+         */
         exclude: /node_modules/
       },
       {
