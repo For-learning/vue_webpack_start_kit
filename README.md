@@ -97,3 +97,4 @@ trim_trailing_whitespace = true
 ```
 
 # MISC
+vue-loader有一个强大的功能就是自定义模块，默认在vue文件中有`<template>` `<script>` `<style>` 三个模块，我们依然可以自定义这种模块，refer to `第2章 Vue+Webpack的前端工程工作流搭建/2-2 vue-loader配置`

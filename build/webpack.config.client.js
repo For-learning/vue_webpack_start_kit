@@ -32,7 +32,7 @@ const devServer = {
   },
   /**
    * mode: "history" 模式下需要开启这个设置，否则路由会当成真正的请求区请求后台，
-   * 
+   *
    */
   historyApiFallback: {
     index: '/public/index.html'
@@ -55,6 +55,19 @@ if (isDev) {
         use: [
           'vue-style-loader',
           'css-loader',
+          /**
+           * 以下在css-loader中开启cssModules方式，refer to：vue-loader.config.js
+           * 使用（refer to footer.jsx）：
+           * - import className from '../assets/styles/footer.styl'
+           * - <div id="{className: footer}">
+           */
+          //   {
+          //     loader: 'css-loader',
+          //     options: {
+          //       model: true,
+          //       localIdentName: isDev ? '[path]-[name]-[hash:base64:5]' : '[hash:base64:5]',
+          //     }
+          //   },
           {
             loader: 'postcss-loader',
             options: {
