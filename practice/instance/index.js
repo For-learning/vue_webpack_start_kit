@@ -15,8 +15,8 @@ const app = new Vue({
 })
 
 // app.$mount('#root')
-
 let i = 0
+
 setInterval(() => {
   i++
   // app.text += 1
