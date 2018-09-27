@@ -20,7 +20,8 @@ const plugins = [
 
 /**
  * 服务端渲染最重要的kernal包
- * ？？？会帮我将整个打包过程通过json文件输出，规避很多逻辑处理
+ * ？？？会帮我将整个打包过程通过json文件输出，规避很多逻辑处理，
+ * 默认输出的文件名为 vue-ssr-server-bundle.json，这个文件在 dev-ssr.js中使用到了
  */
 if (isDev) {
   plugins.push(new VueServerPlugin())

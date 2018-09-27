@@ -1,5 +1,9 @@
 import createApp from './create-app'
 
+/**
+ * 模拟浏览器中加载路由的使用
+ * 因为这是在node端，没有浏览器环境启动路由加载组件
+ */
 export default context => {
   return new Promise((resolve, reject) => {
     const {

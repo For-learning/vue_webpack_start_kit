@@ -18,6 +18,7 @@ const defaultPluins = [
   new HTMLPlugin({
     template: path.join(__dirname, 'template.html')
   }),
+  // 通过这个插件生成 server端需要的 vue-ssr-client-manifest.json 文件
   new VueClientPlugin()
 ]
 

@@ -98,3 +98,6 @@ trim_trailing_whitespace = true
 
 # MISC
 vue-loader有一个强大的功能就是自定义模块，默认在vue文件中有`<template>` `<script>` `<style>` 三个模块，我们依然可以自定义这种模块，refer to `第2章 Vue+Webpack的前端工程工作流搭建/2-2 vue-loader配置`
+
+# SSR做的那些事
+对于像vue，react之类的框架，我们一般会通过webpack进行打包，从而生成一个（或几个）bundle的js文件，而这些js文件中包括正常页面交互的js，并且还有样式文件，甚至一些体积较小的图片被转成base64的格式放在里面。这些文件会一并被浏览器请求过去，当这些js文件在正常执行内部的逻辑之前，里面的webpack会先把里面的js，css甚至图片等插入到事先定义好的摸板中，之后才能执行我们熟知的页面逻辑。而SSR则是在将这部分“里面的webpack会先把里面的js，css甚至图片等插入到事先定义好的摸板中”放在服务器端执行。

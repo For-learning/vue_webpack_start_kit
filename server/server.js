@@ -22,6 +22,9 @@ app.use(koaSession({
 
 const isDev = process.env.NODE_ENV === 'development'
 
+/**
+ * 这个自定义中间件主要是记录所以的请求并打印出来，方便调试使用
+ */
 app.use(async (ctx, next) => {
   try {
     console.log(`request with path ${ctx.path}`)
@@ -42,9 +45,15 @@ app.use(async (ctx, next) => {
   await next()
 })
 
+/**
+ * 使用koa-send插件，koa-send是专门用于发送koa静态文件的插件
+ * 处理favicon请求不到的情况
+ */
 app.use(async (ctx, next) => {
   if (ctx.path === '/favicon.ico') {
-    await send(ctx, '/favicon.ico', { root: path.join(__dirname, '../') })
+    await send(ctx, '/favicon.ico', {
+      root: path.join(__dirname, '../')
+    })
   } else {
     await next()
   }
