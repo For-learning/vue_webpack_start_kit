@@ -5,3 +5,7 @@ apps:
       NODE_ENV: production
       HOST: localhost
       PORT: 8888
+    env_development:
+      NODE_ENV: production
+      HOST: localhost
+      PORT: 8888

@@ -12,8 +12,7 @@
   height: 40px;
   position: relative;
   text-align: center;
-
-  animation: sk-rotate 2.0s infinite linear;
+  animation: sk-rotate 2s infinite linear;
 }
 
 .dot1, .dot2 {
@@ -24,24 +23,28 @@
   top: 0;
   background-color: #333;
   border-radius: 100%;
-
-  animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2s infinite ease-in-out;
 }
 
 .dot2 {
   top: auto;
   bottom: 0;
-  animation-delay: -1.0s;
+  animation-delay: -1s;
 }
 
-@keyframes sk-rotate { 100% { transform: rotate(360deg); }}
-
+@keyframes sk-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 @keyframes sk-bounce {
   0%, 100% {
-    transform: scale(0.0);
-  } 50% {
-    transform: scale(1.0);
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
   }
 }
 </style>
