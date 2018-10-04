@@ -1,6 +1,6 @@
-import Router from "vue-router";
+import Router from 'vue-router'
 
-import routes from "./routes";
+import routes from './routes'
 
 export default () => {
   return new Router({
@@ -9,7 +9,7 @@ export default () => {
      * CROWN：
      * hash# 路由一般用来定位的，也不会被搜索引擎解析，SEO会变得不好，因此改为history正常模式。
      */
-    mode: "history",
+    mode: 'history',
     /**
      * CROWN：
      * base作为路由的基础路径，比如login会变为localhost:8080/base/login，注意，两头加上/。
@@ -22,8 +22,8 @@ export default () => {
      * 页面内链接router跳转使用的是router-link标签，下面两个配置为router-link激活/不被激活时的样式存在的。
      * 注意：当存在子连接的时候，linkActiveClass表示所有匹配链接集合，linkExactActiveClass表示真正准确匹配的链接。
      */
-    linkActiveClass: "active-link",
-    linkExactActiveClass: "exact-active-link",
+    linkActiveClass: 'active-link',
+    linkExactActiveClass: 'exact-active-link',
     /**
      * CROWN：
      * to是将要跳转的component对象，from是从哪个component来，
@@ -31,11 +31,11 @@ export default () => {
      * by the word
      * 传统的web当回到上次浏览页面的时候都是回到页面最顶端，或事一些高级浏览器帮实现了记录位置的功能。
      */
-    scrollBehavior(to, from, savedPosition) {
+    scrollBehavior (to, from, savedPosition) {
       if (savedPosition) {
-        return savedPosition;
+        return savedPosition
       } else {
-        return { x: 0, y: 0 };
+        return { x: 0, y: 0 }
       }
     }
     /**
@@ -56,5 +56,5 @@ export default () => {
     // stringifyQuery (obj) {
 
     // }
-  });
-};
+  })
+}

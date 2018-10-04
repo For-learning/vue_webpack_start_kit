@@ -47,10 +47,10 @@ import {
   //  mapGetters,
   //  mapActions,
   //  mapMutations
-} from "vuex";
-import Header from "./layout/header.vue";
-import Footer from "./layout/footer.jsx";
-import Loading from "./components/loading/loading.vue";
+} from 'vuex'
+import Header from './layout/header.vue'
+import Footer from './layout/footer.jsx'
+import Loading from './components/loading/loading.vue'
 // import Todo from './views/todo/todo.vue'
 
 // console.log(Header.__docs)
@@ -65,7 +65,7 @@ export default {
     Loading
     // Todo
   },
-  mounted() {
+  mounted () {
     // console.log(this.$store)
     // let i = 1
     // this.updateCountAsync({
@@ -83,15 +83,15 @@ export default {
   methods: {
     // ...mapActions(['updateCountAsync']),
     // ...mapMutations(['updateCount']),
-    notify() {
+    notify () {
       this.$notify({
-        content: "test $notify",
-        btn: "close"
-      });
+        content: 'test $notify',
+        btn: 'close'
+      })
     }
   },
   computed: {
-    ...mapState(["loading"])
+    ...mapState(['loading'])
     // ...mapState({
     //   counter: (state) => state.count
     // }),
@@ -105,7 +105,7 @@ export default {
     //   return this.$store.getters.fullName
     // }
   }
-};
+}
 </script>
 
 <style lang="stylus" scoped>

@@ -46,7 +46,6 @@ store.subscribeAction((action, state) => {
   console.log(action.payload)
 })
 
-
 /**
  * CROWN：
  * 导航守卫
@@ -71,7 +70,6 @@ router.beforeResolve((to, from, next) => {
   console.log('before resolve invoked')
   next()
 })
-
 
 /**
  * CROWN：

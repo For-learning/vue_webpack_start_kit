@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "Notification",
+  name: 'Notification',
   props: {
     content: {
       type: String,
@@ -23,32 +23,32 @@ export default {
     },
     btn: {
       type: String,
-      default: "关闭"
+      default: '关闭'
     }
   },
-  data() {
+  data () {
     return {
       visible: true
-    };
+    }
   },
   computed: {
-    style() {
-      return {};
+    style () {
+      return {}
     }
   },
   methods: {
-    handleClose(e) {
-      e.preventDefault();
-      this.$emit("close");
+    handleClose (e) {
+      e.preventDefault()
+      this.$emit('close')
     },
-    afterLeave() {
-      this.$emit("closed");
+    afterLeave () {
+      this.$emit('closed')
     },
-    afterEnter() {},
-    clearTimer() {},
-    createTimer() {}
+    afterEnter () {},
+    clearTimer () {},
+    createTimer () {}
   }
-};
+}
 </script>
 
 <style lang="stylus" scoped>
