@@ -1,5 +1,5 @@
-// import Todo from '../views/todo/todo.vue'
-// import Login from '../views/login/login.vue'
+import Todo from '../views/todo/todo.vue'
+import Login from '../views/login/login.vue'
 
 export default [{
   path: '/',
@@ -24,9 +24,10 @@ export default [{
      * CROWN：
      * 配合 babel-plugin-syntax-dynamic-import 插件进行异步模块加载。
      */
-  component: () =>
-      import(/* webpackChunkName: "todo-view" */ '../views/todo/todo.vue'),
-  // component: Todo,
+  // component: () =>
+  //     import(/* webpackChunkName: "todo-view" */ '../views/todo/todo.vue'),
+  // // component: Todo,
+  component: Todo,
 
   /**
      * CROWN：
@@ -78,8 +79,9 @@ export default [{
 },
 {
   path: '/login',
-  component: () =>
-      import(/* webpackChunkName: "login-view" */ '../views/login/login.vue')
-  // component: Login
+  // component: () =>
+  //     import(/* webpackChunkName: "login-view" */ '../views/login/login.vue')
+  // // component: Login
+  component: Login
 }
 ]
