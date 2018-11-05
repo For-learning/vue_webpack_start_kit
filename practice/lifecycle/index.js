@@ -59,9 +59,10 @@ setTimeout(() => {
 }, 1000)
 
 /**
- * 1. 没有// el: '#root' 和 app.$mount('#root') 的话，beforeMount ()和mount ()是不会触发的在vue进行实例化的时候。
+ * 1. 没有// el: '#root' 和 app.$mount('#root') 的话，beforeMount ()和mount ()是不会在vue进行实例化的时候触发的。
  * 2. 具体声明周期图参见官方文档的图，非常详细。
- * 3. renderError () 只会捕捉当前Vue实例中render的错误。
+ * 3. renderError () 只会捕捉当前Vue实例中render的错误。errorCaptured() 会捕获所有错误包括子组件
  * 4. 因为template的本质就是，Vue会将其转换成render函数。
- * 4. render (h)方法其实是在beforeMount ()和mount ()之间执行。其实这两者之间就是做了render这件事情。
+ * 5. render (h)方法其实是在beforeMount ()和mount ()之间执行。其实这两者之间就是做了render这件事情。
+ * 6. beforeUpdate 和 updated 当有数据更新的时候执行
  */
