@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+</head>
+
+<body>
+    <div id="app">
+        <hr>
+        <p style="color: red">###### Hello world ######</p>
+        <h2>{{msg}}</h2>
+
+        <hr>
+        <p style="color: red">###### Data binding ######</p>
+        <!-- NOT ALLOWED but works for version 1: <a href="{{url}}">Home</a> -->
+        <a v-bind:href="url + '?param=1'"></a>
+        <p>
+            <form>
+                name:
+                <input type="text" v-model="name" name="" id="">
+                <div>
+                    <label for="">{{name}}</label>
+                    <br>
+                </div>
+            </form>
+        </p>
+
+        <hr>
+        <p style="color: red">###### 2-way Data binding ######</p>
+        <legend>Interests</legend>
+        <div v-for="(interest, index) in interests">
+            <input type="checkbox" v-model="selectedinterests" :value="interest" name="" id="">{{index+1}}. {{interest}}
+        </div>
+
+        <p v-if="selectedinterests.length == 3">You are active!</p>
+        <p v-else-if="selectedinterests.length > 0">You selected: {{selectedinterests.join(', ')}}</p>
+        <p v-else>Please select at least one</p>
+
+        <p v-show="selectedinterests.length == 3">v-show</p>
+
+        <hr>
+        <p style="color: red">###### Event handle ######</p>
+        <form action="">
+            <button v-on:click="logIn('Logedin', $event)">Log in</button>
+            <button @click.pre="logOut('LogedOut', $event)">Log out</button>
+            <p>{{logInfo}}</p>
+        </form>
+
+        <hr>
+        <p style="color: red">###### style binding ######</p>
+        <div :style="fancyWord">fancy word</div>
+        <div :style="[fancyWord, fancierWord]"
+        @mouseover="fancierWord.color = 'black'"
+        v-on:mouseout="fancierWord.color = 'purple'"
+        >fancier word</div>
+
+        <hr>
+        <p style="color: red">###### Class handle ######</p>
+        <div class="black" :class="{blue: cold, red: hot}">Tempered text</div>
+        <div class="black" :class="cssClasses">Tempered text</div>
+        <div class="black" :class="[blueClasses, redClasses, {'italic': selected}]">Tempered text</div>
+    </div>
+
+    <!--
+        1. : is the shorthand fot v-bind:.
+        2. You can use {{}} in "url" of a tag in vue version 1 but you are only allowed using :(v-bind:) instead.
+        3. @ is the shorthand for v-on:.
+    -->
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "Hello vue!",
+                url: "http://www.baidu.com",
+                name: "Mike",
+                interests: ['Running', 'Cycling', 'Swimming'],
+                selectedinterests: [],
+                logInfo: "",
+
+                cold: true,
+                hot: false,
+                fancyWord: {
+                    color: "yellow"
+                },
+                fancierWord: {
+                    color: "purple"
+                },
+                cssClasses: {
+                    blue: false,
+                    red: true
+                },
+                blueClasses: {
+                    blue: true,
+                },
+                redClasses: {
+                    red: true
+                },
+                selected: true
+            },
+            methods: {
+                logIn: function (param, event) {
+                    event.preventDefault();
+                    this.logInfo = param;
+                },
+                logOut: function (param, event) {
+                    this.logInfo = param;
+                }
+            }
+        });
+    </script>
+
+    <style>
+        .black {
+            color: black
+        }
+
+        .blue {
+            color: blue
+        }
+
+        .red {
+            color: green
+        }
+
+        .yellow {
+            color: yellow
+        }
+
+        .italic {
+            font-style: italic;
+        }
+    </style>
+
+</body>
+
+</html>
