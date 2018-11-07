@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- <product-list :products="theProducts" the-title="award-winning product line"></product-list> The same as below-->
+        <component :is="dataType" :products="theProducts" the-title="award-winning product line"></component>
+    </div>
+
+    <script>
+        // 
+        Vue.component('product-list', {
+            template: "\
+                <div><h2>{{theTitle}}</h2>\
+                <ul>\
+                    <product-list-item v-for='product in products' :product='product'></product-list-item>\
+                </ul>\
+                </div>",
+            props: ["theTitle", "products"]
+        });
+
+        // product item item
+        Vue.component('product-list-item', {
+            template: "\
+                    <li>\
+                        <p>{{product}}</p>\
+                    </li>",
+            props: ["product"]
+        });
+
+        // main entray
+        new Vue({
+            el: "#app",
+            data: {
+                theProducts: [],
+                dataType: "product-list"
+            },
+            created: function () { // hook
+                this.theProducts = ["qqq", "www", "EEE"];
+            }
+        });
+    </script>
+</body>

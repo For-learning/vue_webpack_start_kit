@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+</head>
+
+<body>
+    <div id="app">
+        <global-component></global-component>
+
+        <local-component></local-component>
+        <local-component></local-component>
+        <local-component></local-component>
+    </div>
+
+    <hr>
+    
+    <div id="app2">
+        <global-component></global-component>
+
+        <local-component></local-component>
+    </div>
+
+    <script>
+        // global-component
+        Vue.component('global-component', {
+            template: '<div>This is a global component</div>'
+        });
+
+        // local-component
+        var LocalComponent = {
+            template: '<div @click="showNum()">This is a local component</div>',
+            data: function () { // This way here is for each component has a specific scope.
+                return {
+                    num: Math.random()
+                }
+            },
+            methods: {
+                showNum: function () {
+                    alert(this.num);
+                }
+            }
+        };
+
+        // main entray
+        new Vue({
+            el: "#app",
+            data: {
+                num: 42
+            },
+            components: {
+                'local-component': LocalComponent
+            }
+        });
+
+        new Vue({
+            el: "#app2",
+            data: {
+                num: 42
+            },
+            components: {}
+        });
+    </script>
+</body>
